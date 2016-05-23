@@ -1,95 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Rectangle</title>
-</head>
-<body>
-  <canvas id="canvas" width="512" height="480"></canvas>
-  <script>
-  var circleX = 100;
-  var circleY = 100;
-  var speed = 40;
-  var monstersCaught = 0;  var circlegX = 100;
-  var circlegY = 100;  window.addEventListener('keydown', function(e) {
-    var key = e.keyCode;
-    if (key === 37) { // left
-      circleX -= speed;
-    }
-    if (key === 39) { // right
-      circleX += speed;
-    }
-    if (key === 38) { // up
-      circleY -= speed;
-    }
-    if (key === 40) { // down
-      circleY += speed;
-    }
-  });  var canvas = document.getElementById('canvas');
-  var ctx = canvas.getContext('2d');
-  var hero = new Image();
-  hero.src = "/images/hero.png";
-  var background = new Image();
-  background.src = "/images/background.png";
-  var goblin = new Image();
-  goblin.src = "/images/goblin.png";  function wrapDirectionX () {
-    if (circleX >=512) {
-      circleX=1;
-    }
-    else if (circleX <=0) {
-      circleX=511;
-    }
-  }  function wrapDirectionY () {
-    if (circleY>=480) {
-      circleY = 20;
-    }
-    else if (circleY<=0) {
-      circleY= 479;
-    }
-  }  function goblins(){   goblin.src = "/images/goblin.png";
-  ctx.drawImage(goblin,circlegX++, circlegY--);
-  ctx.fill();
-  if (circlegX >= 480){
-    circlegX = Math.random() * 400;
-    circlegX--;
-  }
-  else if (circlegX <= 0){
-    circlegX = Math.random() * 400;
-    circlegX--;
-  }
-  if (circlegY>=480) {
-    circlegY = Math.random() * 400;;
-  }
-  else if (circlegY<=0) {
-    circlegY= Math.random() * 400;
-  } }
-  function main() {
-    ctx.beginPath();
-    background.src = "/images/background.png";
-    ctx.drawImage(background,0,0);    hero.src = "/images/hero.png";
-    ctx.drawImage(hero, circleX, circleY);
-    ctx.fill();
-    wrapDirectionX();
-    wrapDirectionY();
-    requestAnimationFrame(main);
-    goblins();
-    // update();
-
-    // function update (modifier) {
-    //
-    //   if (
-    //     circleX >= (circlegX + 32)
-    //     || circlegX >= (circleX + 32)
-    //     || circleY >= (circlegY + 32)
-    //     || circlegY >= (circleY + 32)
-    //   ) {
-    //     ++monstersCaught;            //reset();
-    //   }
-    //   else {
-    //     console.log("Collision happened")
-    //   }
-    };
-    main();
-    </script>
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="512" height="480"></canvas>
+    <script src="canvas-game.js"></script>
   </body>
-  </html>
+</html>
