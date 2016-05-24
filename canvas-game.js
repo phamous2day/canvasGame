@@ -13,7 +13,7 @@ function Hero() {
   this.y = 200;
   this.dirX = 0;
   this.dirY = 0;
-  this.speed = 3;
+  this.speed = 5;
 }
 
 Hero.prototype.update = function() {
@@ -21,21 +21,21 @@ Hero.prototype.update = function() {
   this.y += this.dirY * this.speed;
 };
 
-function Monster() {
-  this.x = Math.random() * 512;
-  this.y = Math.random() * 480;
+function Rescue() {
+  this.x = Math.random() * 920;
+  this.y = Math.random() * 546;
   this.dirX = 1;
   this.dirY = 0;
-  this.speed = 5;
+  this.speed = 7;
 }
 
-Monster.prototype.update = function() {
+Rescue.prototype.update = function() {
   updateEnemy(this);
 };
 
 function Goblin() {
-  this.x = Math.random() * 512;
-  this.y = Math.random() * 480;
+  this.x = Math.random() * 920;
+  this.y = Math.random() * 546;
   this.dirX = 1;
   this.dirY = 0;
   this.speed = 3;
@@ -47,15 +47,15 @@ Goblin.prototype.update = function() {
 
 var hero = new Hero();
 
-var monsterImage = new Image();
-monsterImage.src = 'images/monster.png';
-var monster = new Monster();
+var RescueImage = new Image();
+RescueImage.src = 'images/Rescue.png';
+var Rescue = new Rescue();
 
 var goblinImage = new Image();
 goblinImage.src = 'images/goblin.png';
 
 var goblins = [
-  new Goblin(), new Goblin()
+  new Goblin(), new Goblin(), new Goblin(), new Goblin(), new Goblin()
 ];
 
 window.addEventListener('keydown', function(event) {
@@ -88,30 +88,30 @@ window.addEventListener('keyup', function(event) {
 
 function collision(enemy) {
   // detect collision
-  if (hero.x + 32 < enemy.x) {
+  if (hero.x + 64 < enemy.x) {
     return false;
-  } else if (enemy.x + 32 < hero.x) {
+  } else if (enemy.x + 64 < hero.x) {
     return false;
-  } else if (hero.y + 32 < enemy.y) {
+  } else if (hero.y + 64 < enemy.y) {
     return false;
-  } else if (enemy.y + 32 < hero.y) {
+  } else if (enemy.y + 64 < hero.y) {
     return false;
   }
   return true;
 }
 
 function handleWrapping(object) {
-  if (object.x > 512) {
+  if (object.x > 920) {
     object.x = 0;
   }
   if (object.x < 0) {
-    object.x = 512;
+    object.x = 920;
   }
-  if (object.y > 480) {
+  if (object.y > 546) {
     object.y = 0;
   }
   if (object.y < 0) {
-    object.y = 480;
+    object.y = 546;
   }
 }
 
@@ -134,27 +134,28 @@ function main() {
   ctx.drawImage(heroImage, hero.x, hero.y);
 
   hero.update();
-  monster.update();
-  if (collision(monster)) {
+  Rescue.update();
+  if (collision(Rescue)) {
     score++;
-    monster.x = Math.random() * 512;
-    monster.y = Math.random() * 480;
+    Rescue.x = Math.random() * 920;
+    Rescue.y = Math.random() * 546;
   }
-  ctx.drawImage(monsterImage, monster.x, monster.y);
+  ctx.drawImage(RescueImage, Rescue.x, Rescue.y);
 
   for (var i = 0; i < goblins.length; i++) {
     var goblin = goblins[i];
     goblin.update();
     if (collision(goblin)) {
       score = 0;
-      hero.x = Math.random() * 512;
-      hero.y = Math.random() * 512;
+      hero.x = Math.random() * 920;
+      hero.y = Math.random() * 920;
       break;
     }
     ctx.drawImage(goblinImage, goblin.x, goblin.y);
   }
 
-  ctx.font = "32px sans-serif";
+  ctx.font = "32px Impact";
+  ctx.fillStyle = "white";
   ctx.fillText('Score: ' + score, 35, 60);
   requestAnimationFrame(main);
 }
