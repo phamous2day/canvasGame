@@ -10,6 +10,11 @@ Move the hero (elf with the sword) with the arrow keys. Rescue the orphan (littl
 ![screenshot](screenshot.png)
 
 
+# Play
+Try out the demo here [here](http://phamous2day.github.io/canvasGame/)
+
+
+
 
 # Milestones
 [x]Got most of the stage and avatars setup with arrow key movements.
