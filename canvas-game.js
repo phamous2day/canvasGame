@@ -26,7 +26,7 @@ function Rescue() {
   this.y = Math.random() * 546;
   this.dirX = 1;
   this.dirY = 0;
-  this.speed = 7;
+  this.speed = 9;
 }
 
 Rescue.prototype.update = function() {
@@ -38,7 +38,7 @@ function Goblin() {
   this.y = Math.random() * 546;
   this.dirX = 1;
   this.dirY = 0;
-  this.speed = 3;
+  this.speed = 7;
 }
 
 Goblin.prototype.update = function() {
@@ -47,15 +47,15 @@ Goblin.prototype.update = function() {
 
 var hero = new Hero();
 
-var RescueImage = new Image();
-RescueImage.src = 'images/Rescue.png';
-var Rescue = new Rescue();
+var rescueImage = new Image();
+rescueImage.src = 'images/rescue.png';
+var rescue = new Rescue();
 
 var goblinImage = new Image();
 goblinImage.src = 'images/goblin.png';
 
 var goblins = [
-  new Goblin(), new Goblin(), new Goblin()
+  new Goblin(), new Goblin()
 ];
 
 window.addEventListener('keydown', function(event) {
@@ -88,13 +88,13 @@ window.addEventListener('keyup', function(event) {
 
 function collision(enemy) {
   // detect collision
-  if (hero.x + 64 < enemy.x) {
+  if (hero.x + 32 < enemy.x) {
     return false;
-  } else if (enemy.x + 64 < hero.x) {
+  } else if (enemy.x + 32 < hero.x) {
     return false;
-  } else if (hero.y + 64 < enemy.y) {
+  } else if (hero.y + 32 < enemy.y) {
     return false;
-  } else if (enemy.y + 64 < hero.y) {
+  } else if (enemy.y + 32 < hero.y) {
     return false;
   }
   return true;
@@ -134,13 +134,13 @@ function main() {
   ctx.drawImage(heroImage, hero.x, hero.y);
 
   hero.update();
-  Rescue.update();
-  if (collision(Rescue)) {
+  rescue.update();
+  if (collision(rescue)) {
     score++;
-    Rescue.x = Math.random() * 920;
-    Rescue.y = Math.random() * 546;
+    rescue.x = Math.random() * 920;
+    rescue.y = Math.random() * 546;
   }
-  ctx.drawImage(RescueImage, Rescue.x, Rescue.y);
+  ctx.drawImage(rescueImage, rescue.x, rescue.y);
 
   for (var i = 0; i < goblins.length; i++) {
     var goblin = goblins[i];
