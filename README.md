@@ -11,7 +11,7 @@ Move the hero (elf with the sword) with the arrow keys. Rescue the orphan (littl
 
 
 # Play
-Try out the demo here [here](http://phamous2day.github.io/canvasGame/)
+Try out the demo [here](http://phamous2day.github.io/canvasGame/)
 
 
 
