@@ -55,7 +55,7 @@ var goblinImage = new Image();
 goblinImage.src = 'images/goblin.png';
 
 var goblins = [
-  new Goblin(), new Goblin(), new Goblin(), new Goblin(), new Goblin()
+  new Goblin(), new Goblin(), new Goblin()
 ];
 
 window.addEventListener('keydown', function(event) {
