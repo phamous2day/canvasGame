@@ -23,7 +23,7 @@ Hero.prototype.update = function() {
 
 function Rescue() {
   this.x = Math.random() * 920;
-  this.y = Math.random() * 546;
+  this.y = Math.random() * 480;
   this.dirX = 1;
   this.dirY = 0;
   this.speed = 9;
@@ -35,7 +35,7 @@ Rescue.prototype.update = function() {
 
 function Goblin() {
   this.x = Math.random() * 920;
-  this.y = Math.random() * 546;
+  this.y = Math.random() * 480;
   this.dirX = 1;
   this.dirY = 0;
   this.speed = 7;
@@ -107,11 +107,11 @@ function handleWrapping(object) {
   if (object.x < 0) {
     object.x = 920;
   }
-  if (object.y > 546) {
+  if (object.y > 480) {
     object.y = 0;
   }
   if (object.y < 0) {
-    object.y = 546;
+    object.y = 480;
   }
 }
 
@@ -138,7 +138,7 @@ function main() {
   if (collision(rescue)) {
     score++;
     rescue.x = Math.random() * 920;
-    rescue.y = Math.random() * 546;
+    rescue.y = Math.random() * 480;
   }
   ctx.drawImage(rescueImage, rescue.x, rescue.y);
 
